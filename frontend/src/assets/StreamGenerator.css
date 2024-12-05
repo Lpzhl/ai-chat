@@ -1,0 +1,96 @@
+/* StreamGenerator.css */
+
+.chat-container {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.chat-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.chat-box {
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.messages {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding-right: 10px;
+    flex-grow: 1;
+}
+
+.user-message, .bot-message {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.user-message span, .bot-message span {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.user-message p, .bot-message p {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.user-message p {
+    align-self: flex-end;
+    background-color: #e3f7ff;
+}
+
+.bot-message p {
+    align-self: flex-start;
+    background-color: #f7f7f7;
+}
+
+.input-field {
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+    border-color: #007bff;
+}
+
+.generate-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.generate-btn:hover {
+    background-color: #0056b3;
+}
