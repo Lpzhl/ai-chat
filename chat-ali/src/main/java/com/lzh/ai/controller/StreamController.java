@@ -1,5 +1,6 @@
 package com.lzh.ai.controller;
 
+import com.lzh.ai.annotation.RedisLimit;
 import com.lzh.ai.config.ApiConfig;
 import com.lzh.ai.strategy.TextProcessingStrategy;
 import com.lzh.ai.strategyFactory.TextProcessingStrategyFactory;
@@ -15,6 +16,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/api/stream")
@@ -26,6 +28,7 @@ public class StreamController {
     @Resource
     private TextProcessingStrategyFactory strategyFactory;
 
+    @RedisLimit(limitCount = 5, time = 1, timeUnit = TimeUnit.MINUTES, limitType = RedisLimit.LimitType.IP)
     @PostMapping("/ai")
     public ResponseEntity<StreamingResponseBody> streamData(
             @RequestParam("type") String type,
