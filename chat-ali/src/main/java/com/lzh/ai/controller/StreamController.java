@@ -2,6 +2,7 @@ package com.lzh.ai.controller;
 
 import com.lzh.ai.annotation.RedisLimit;
 import com.lzh.ai.config.ApiConfig;
+import com.lzh.ai.domian.StreamRequest;
 import com.lzh.ai.strategy.TextProcessingStrategy;
 import com.lzh.ai.strategyFactory.TextProcessingStrategyFactory;
 import jakarta.annotation.Resource;
@@ -31,8 +32,10 @@ public class StreamController {
     @RedisLimit(limitCount = 5, time = 1, timeUnit = TimeUnit.MINUTES, limitType = RedisLimit.LimitType.IP)
     @PostMapping("/ai")
     public ResponseEntity<StreamingResponseBody> streamData(
-            @RequestParam("type") String type,
-            @RequestBody String userQuery) throws IOException {
+            @RequestBody StreamRequest streamRequest) throws IOException {
+
+        String type = streamRequest.getType();
+        String userQuery = streamRequest.getUserQuery();
 
         // 根据 'type' 参数选择适当的策略
         TextProcessingStrategy strategy = strategyFactory.getStrategy(type);
